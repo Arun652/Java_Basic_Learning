@@ -1,0 +1,1 @@
+Program finds the min and max of the passed array.
