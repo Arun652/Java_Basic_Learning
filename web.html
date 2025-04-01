@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreya's Decision</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #ffebcd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            position: relative;
+            z-index: 10;
+        }
+        h1 {
+            color: #ff69b4;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        .btn {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+        }
+        .btn:first-child {
+            background-color: #ff69b4;
+            color: white;
+        }
+        #noBtn {
+            position: absolute;
+            background-color: #ff6347;
+            color: white;
+            transition: transform 0.3s ease-in-out;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall 3s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh) translateX(0); }
+            100% { transform: translateY(100vh) translateX(30px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Shreya Will Go Out With Me Next Weekend?</h1>
+        <div class="buttons">
+            <button class="btn" onclick="startParty()">Yes</button>
+            <button class="btn" id="noBtn">No</button>
+        </div>
+    </div>
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        noBtn.addEventListener('mouseover', moveNoButton);
+        noBtn.addEventListener('click', moveNoButton);
+        
+        function moveNoButton() {
+            const x = Math.random() * 100 - 50;
+            const y = Math.random() * 100 - 50;
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        function startParty() {
+            alert('Yay! See you soon! Get ready for an amazing time!');
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                document.body.sappendChild(confetti);
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+    </script>
+</body>
+</html>
